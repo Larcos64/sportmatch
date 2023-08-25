@@ -2,12 +2,12 @@ Mockups iniciales de la aplicación SportMatch brindan una visión general del p
 
 - Registro: posibilidad de registrarse como deportista o establecimiento deportivo.
 
-![Registro](./mockups/registry.png)
+![Registro](./mockups/registry.PNG)
 
 - Vista de perfil: información básica con opciones principales y menú de navegación.
 
-![Perfil](./mockups/profile.png)
+![Perfil](./mockups/profile.PNG)
 
 - Eventos: lista de la programación de eventos disponibles para unirse.
 
-![Eventos](./mockups/events.png)
+![Eventos](./mockups/events.PNG)
