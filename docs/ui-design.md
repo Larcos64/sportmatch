@@ -1,0 +1,1 @@
+- Vista de perfil: información básica con opciones principales y menú de navegación
