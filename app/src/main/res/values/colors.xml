@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- basic colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- colors for app-->
+    <color name="colorPrimary">#222222</color>
+    <color name="colorPrimaryVariant">#1E2D3E</color>
+    <color name="colorAccent">#FF5500</color>
 </resources>

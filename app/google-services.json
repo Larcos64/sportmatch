@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "643504625296",
+    "project_id": "sportmatch-app-399705",
+    "storage_bucket": "sportmatch-app-399705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643504625296:android:82e89bcad8d49a8cb36a15",
+        "android_client_info": {
+          "package_name": "com.example.sportmatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643504625296-83eqf360n5ujbs2nmgvb836oj679fbrn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sportmatch",
+            "certificate_hash": "a6717bc23ae3de93c8af0357d17efb2e7d52c041"
+          }
+        },
+        {
+          "client_id": "643504625296-440rhakjnueke143hh9fp03cfrn7qnrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE8SXFn34RGv7jUX1TpxDCipax3QUU6lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643504625296-440rhakjnueke143hh9fp03cfrn7qnrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
