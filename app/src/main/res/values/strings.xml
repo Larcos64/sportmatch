@@ -4,6 +4,8 @@
     <!-- Button Strings -->
     <string name="google_sign_in">Iniciar con Google</string>
     <string name="log_out">Cerrar sesión</string>
+    <string name="login">Ingresar</string>
+    <string name="register">Registrarse</string>
 
     <!-- Configs -->
     <string name="prefs_file">com.example.sportmatch.PREFERENCE_FILE_KEY</string>
@@ -11,4 +13,8 @@
     <!-- Private -->
     <string name="web_client_id">643504625296-440rhakjnueke143hh9fp03cfrn7qnrr.apps.googleusercontent.com</string>
     <string name="app_client_id">643504625296-83eqf360n5ujbs2nmgvb836oj679fbrn.apps.googleusercontent.com</string>
+
+    <!-- Field Strings -->
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
 </resources>

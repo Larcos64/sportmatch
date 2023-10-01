@@ -8,10 +8,58 @@
     android:orientation="vertical"
     android:gravity="center">
 
-        <Button
-            android:id="@+id/btnGoogleSignIn"
-            android:layout_width="wrap_content"
+        <!-- Text input to user email -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxLogin"
+            android:id="@+id/lytEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/google_sign_in"/>
+            android:hint="@string/email"
+            app:startIconDrawable="@mipmap/ic_mail_black"
+            app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditTextLogin"
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Text input to user pass -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/StyleTextInputLayotTextBoxLogin"
+            android:id="@+id/lytPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            app:startIconDrawable="@mipmap/ic_https_black"
+            app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/StyleTextInputEditTextLogin"
+                    android:id="@+id/login_admin_edt_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Registration button -->
+        <com.google.android.material.button.MaterialButton
+            style="@style/StylePrimaryColoredButton"
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"/>
+
+        <!-- Google sign-in button -->
+        <com.google.android.material.button.MaterialButton
+            style="@style/StyleGoogleSignInButton"
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/google_sign_in" />
 
 </LinearLayout>
