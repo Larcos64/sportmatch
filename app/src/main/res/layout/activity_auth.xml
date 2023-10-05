@@ -8,6 +8,14 @@
     android:orientation="vertical"
     android:gravity="center">
 
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/sixteen"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/twenty"
+            android:src="@mipmap/ic_launcher_foreground" />
+
         <!-- Text input to user email -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/StyleTextInputLayotTextBoxLogin"
@@ -45,6 +53,20 @@
                     android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Login button -->
+        <com.google.android.material.button.MaterialButton
+            style="@style/StyleAccentColoredButton"
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerInsetStart="16dp"
+            app:dividerInsetEnd="16dp"/>
 
         <!-- Registration button -->
         <com.google.android.material.button.MaterialButton
