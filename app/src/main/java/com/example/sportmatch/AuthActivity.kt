@@ -1,5 +1,6 @@
 package com.example.sportmatch
 
+import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sportmatch.databinding.ActivityAuthBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -17,15 +19,19 @@ import com.google.android.gms.common.api.ApiException
 
 
 class AuthActivity : AppCompatActivity() {
+    lateinit var binding: ActivityAuthBinding
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
     // private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
     // private var showOneTapUI = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnGoogle: Button = findViewById(R.id.btnGoogleSignIn)
+        binding.btnRegister.setOnClickListener {
+            gotoRegistration()
+        }
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
@@ -67,7 +73,7 @@ class AuthActivity : AppCompatActivity() {
             }
         }
 
-        btnGoogle.setOnClickListener {
+        binding.btnGoogleSignIn.setOnClickListener {
             oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this) { result ->
                     try {
@@ -83,5 +89,9 @@ class AuthActivity : AppCompatActivity() {
                     Log.d("TAG", e.localizedMessage)
                 }
         }
+    }
+    fun gotoRegistration() {
+        val i = Intent(this, RegistrationActivity::class.java)
+        startActivity(i)
     }
 }

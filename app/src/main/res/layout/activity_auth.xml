@@ -14,7 +14,7 @@
             android:layout_marginTop="@dimen/sixteen"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/twenty"
-            android:src="@mipmap/ic_launcher_foreground" />
+            android:src="@drawable/img_logo" />
 
         <!-- Text input to user email -->
         <com.google.android.material.textfield.TextInputLayout
