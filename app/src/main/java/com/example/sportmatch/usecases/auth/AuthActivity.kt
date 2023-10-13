@@ -1,16 +1,16 @@
-package com.example.sportmatch
+package com.example.sportmatch.usecases.auth
 
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sportmatch.R
+import com.example.sportmatch.usecases.register.RegistrationActivity
 import com.example.sportmatch.databinding.ActivityAuthBinding
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity

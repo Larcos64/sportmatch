@@ -1,14 +1,20 @@
-package com.example.sportmatch
+package com.example.sportmatch.usecases.register
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.Point
+import android.graphics.PorterDuff
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.sportmatch.R
 import com.example.sportmatch.databinding.ActivityRegistrationBinding
 
 class RegistrationActivity : AppCompatActivity() {
@@ -24,27 +30,62 @@ class RegistrationActivity : AppCompatActivity() {
 //        addImage(layout,"Deportista", R.drawable.img_athletes)
 //        addImage(layout,"Establecimiento", R.drawable.img_establishments)
 
-        createImgButton("Deportista", R.drawable.img_athletes)
-        createImgButton("Establecimiento", R.drawable.img_establishments)
+        createImgButton(getString(R.string.athlete), R.drawable.img_athletes, AthleteRegistrationActivity::class.java)
+        createImgButton(getString(R.string.establishment), R.drawable.img_establishments, EstablishmentRegistrationActivity::class.java)
 
 //        for (i in (1..2)){
 //            createImgButton()
 //        }
     }
 
-    private fun createImgButton(text: String, imgID: Int) {
+    private fun createImgButton(text: String, imgID: Int, activity: Class<*>) {
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
 
-        val iv = ImageView(this)
+        // Create a RelativeLayout as container
+        val relativeLayout = RelativeLayout(this)
         val lp = ViewGroup.LayoutParams(
             size.x * 80/100, 500
         )
+        relativeLayout.layoutParams = lp
 
+        // Create the ImageView and configure the image
+        val iv = ImageView(this)
+        val ivLp = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+        )
         iv.setImageResource(imgID)
-        iv.layoutParams = lp
-        binding.cnrRegisterAthlete.addView(iv)
+        iv.layoutParams = ivLp
+
+        // Set style to ImageView
+        iv.setColorFilter(Color.DKGRAY, PorterDuff.Mode.MULTIPLY)
+
+        // Create the TextView and set the text
+        val tv = TextView(this)
+        val tvLp = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        tv.text = text
+        tv.gravity = Gravity.CENTER
+        tvLp.addRule(RelativeLayout.CENTER_IN_PARENT)
+        tv.layoutParams = tvLp
+
+        // Set style to TextView
+        tv.setTextAppearance(R.style.StyleAccentTextView)
+
+        // Add ImageView and TextView to RelativeLayout
+        relativeLayout.addView(iv)
+        relativeLayout.addView(tv)
+
+        // Adding an OnClickListener to the RelativeLayout to start the corresponding activity
+        relativeLayout.setOnClickListener {
+            val intent = Intent(this, activity)
+            startActivity(intent)
+        }
+
+        // Add the RelativeLayout to the main container
+        binding.cnrRegisterAthlete.addView(relativeLayout)
     }
     private fun createImgButtonV1() {
         val display = windowManager.defaultDisplay

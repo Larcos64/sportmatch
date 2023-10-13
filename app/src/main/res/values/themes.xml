@@ -12,7 +12,9 @@
 
     <!-- Standard style for text input layout (Login) -->
     <style name="StyleTextInputLayotTextBoxLogin">
-        <item name="textInputStyle">@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox</item>
+        <item name="textInputStyle">
+            @style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox
+        </item>
         <item name="errorEnabled">true</item>
     </style>
 
@@ -31,13 +33,13 @@
         <item name="android:textSize">@dimen/twenty</item>
     </style>
 
-    <!-- Primary style for buttons -->
+    <!-- Primary buttons -->
     <style name="StylePrimaryColoredButton" parent="StandardStyleButton">
         <item name="android:backgroundTint">@color/colorPrimaryVariant</item>
         <item name="rippleColor">@color/colorAccent</item>
     </style>
 
-    <!-- Accent style for buttons -->
+    <!-- Accent buttons -->
     <style name="StyleAccentColoredButton" parent="StandardStyleButton">
         <item name="android:backgroundTint">@color/colorAccent</item>
     </style>
@@ -51,5 +53,12 @@
         <item name="android:textSize">@dimen/twenty</item>
         <item name="rippleColor">@color/colorAccent</item>
         <item name="icon">@drawable/googleg_standard_color_18</item>
+    </style>
+
+    <!-- Accent Text Views -->
+    <style name="StyleAccentTextView">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/twenty</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

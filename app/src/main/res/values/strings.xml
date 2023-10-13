@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">Sportmatch</string>
 
+    <!-- App Strings -->
+    <string name="athlete">Deportista</string>
+    <string name="establishment">Establecimiento</string>
+
     <!-- Button Strings -->
     <string name="google_sign_in">Iniciar con Google</string>
     <string name="log_out">Cerrar sesión</string>
     <string name="login">Ingresar</string>
     <string name="register">Registrarse</string>
+    <string name="go_back">Volver</string>
 
     <!-- Configs -->
     <string name="prefs_file">com.example.sportmatch.PREFERENCE_FILE_KEY</string>
@@ -17,4 +22,8 @@
     <!-- Field Strings -->
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
+    <string name="title_activity_establishment_regsitration">EstablishmentRegsitrationActivity</string>
+
+    <!-- Title Strings -->
+    <string name="establishment_registration">Registrar establecimiento</string>
 </resources>

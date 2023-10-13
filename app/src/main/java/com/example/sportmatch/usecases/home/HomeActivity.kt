@@ -1,9 +1,9 @@
-package com.example.sportmatch
+package com.example.sportmatch.usecases.home
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.sportmatch.R
 
 enum class ProviderType {
     GOOGLE
