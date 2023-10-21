@@ -23,6 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.sportmatch.R
+import com.example.sportmatch.usecases.common.appBarUtil
 import com.example.sportmatch.usecases.register.ui.theme.SportmatchTheme
 
 class EstablishmentRegistrationActivity : ComponentActivity() {
@@ -40,22 +41,7 @@ class EstablishmentRegistrationActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .nestedScroll(scrollBehavior.nestedScrollConnection),
-                        topBar = {
-                            CenterAlignedTopAppBar(
-                                title = {
-                                    Text(stringResource(R.string.establishment_registration))
-                                },
-                                navigationIcon = {
-                                    IconButton(onClick = { /*TODO*/ }) {
-                                        Icon(
-                                            imageVector = Icons.Default.ArrowBack,
-                                            contentDescription = stringResource(R.string.go_back)
-                                        )
-                                    }
-                                },
-                                scrollBehavior = scrollBehavior
-                            )
-                        }
+                        topBar = { appBarUtil.getAppBar(stringResource(R.string.establishment_registration)) }
                     ) {
                         values ->
                         LazyColumn(
