@@ -15,15 +15,17 @@
         android:theme="@style/Theme.Sportmatch"
         tools:targetApi="31">
         <activity
+            android:name=".usecases.register.AthleteRegistrationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_athlete_registration"
+            android:theme="@style/Theme.Sportmatch" />
+        <activity
             android:name=".usecases.register.EstablishmentRegistrationActivity"
             android:exported="false"
             android:label="@string/title_activity_establishment_regsitration"
             android:theme="@style/Theme.Sportmatch" />
         <activity
             android:name=".usecases.common.TopAppBarActivity"
-            android:exported="false" />
-        <activity
-            android:name=".usecases.register.AthleteRegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".usecases.register.RegistrationActivity"

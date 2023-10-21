@@ -41,7 +41,12 @@ class EstablishmentRegistrationActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .nestedScroll(scrollBehavior.nestedScrollConnection),
-                        topBar = { appBarUtil.getAppBar(stringResource(R.string.establishment_registration)) }
+                        topBar = {
+                            appBarUtil.getAppBar(
+                                stringResource(R.string.establishment_registration),
+                                { finish() }
+                            )
+                        }
                     ) {
                         values ->
                         LazyColumn(

@@ -16,11 +16,11 @@ import com.google.android.material.appbar.AppBarLayout.ScrollingViewBehavior
 class AppBarUtil {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun getAppBar(title: String) {
+    fun getAppBar(title: String, navigationIcon: () -> Unit) {
         var scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
         return CenterAlignedTopAppBar(
             title = { Text(title) },
-            navigationIcon = { IconButton(onClick = { }) { Icon(imageVector = Icons.Default.ArrowBack, contentDescription = stringResource(R.string.go_back)) } },
+            navigationIcon = { IconButton(onClick = navigationIcon) { Icon(imageVector = Icons.Default.ArrowBack, contentDescription = stringResource(R.string.go_back)) } },
             scrollBehavior = scrollBehavior
         )
     }
