@@ -24,7 +24,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.sportmatch.usecases.auth.sign_in.GoogleAuthUiClient
 import com.example.sportmatch.usecases.auth.sign_in.SignInScreen
 import com.example.sportmatch.usecases.auth.sign_in.SignInViewModel
-import com.example.sportmatch.usecases.register.ui.theme.SportmatchTheme
+import com.example.sportmatch.usecases.register.AthleteRegistrationScreen
+import com.example.sportmatch.usecases.ui.theme.SportmatchTheme
 import kotlinx.coroutines.launch
 import com.google.android.gms.auth.api.identity.Identity
 
@@ -109,8 +110,20 @@ class MainActivity: androidx.activity.ComponentActivity() {
                                             "Signed out",
                                             Toast.LENGTH_LONG
                                         ).show()
+
+                                        navController.popBackStack()
+                                    }
+                                },
+                                onClickImage = {
+                                    lifecycleScope.launch {
+                                        navController.navigate("athleteRegistration")
                                     }
                                 }
+                            )
+                        }
+                        composable("athleteRegistration") {
+                            AthleteRegistrationScreen(
+                                userData = googleAuthUiClient.getSignedInUser()
                             )
                         }
                     }

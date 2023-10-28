@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.sportmatch.R
 import com.example.sportmatch.usecases.common.appBarUtil
-import com.example.sportmatch.usecases.register.ui.theme.SportmatchTheme
+import com.example.sportmatch.usecases.ui.theme.SportmatchTheme
 
 class EstablishmentRegistrationActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)

@@ -1,4 +1,4 @@
-package com.example.sportmatch.usecases.register.ui.theme
+package com.example.sportmatch.usecases.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -13,19 +13,17 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
-import androidx.compose.ui.res.colorResource
 import androidx.core.view.WindowCompat
-import com.example.sportmatch.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = DarkBlue800,
-    secondary = DarkBlue600,
+    secondary = Orange500,
     tertiary = Orange500
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = DarkBlue800,
-    secondary = DarkBlue600,
+    secondary = Orange500,
     tertiary = Orange500
 
     /* Other default colors to override
