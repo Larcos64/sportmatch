@@ -25,16 +25,13 @@
             android:label="@string/title_activity_establishment_regsitration"
             android:theme="@style/Theme.Sportmatch" />
         <activity
-            android:name=".usecases.common.TopAppBarActivity"
-            android:exported="false" />
-        <activity
             android:name=".usecases.register.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".usecases.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".usecases.auth.AuthActivity"
+            android:name=".usecases.auth.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
