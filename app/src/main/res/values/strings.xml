@@ -24,8 +24,17 @@
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
     <string name="title_activity_establishment_regsitration">EstablishmentRegsitrationActivity</string>
+    <string name="sports_profile">Perfil deportivo</string>
 
     <!-- Title Strings -->
     <string name="establishment_registration">Registrar establecimiento</string>
     <string name="title_activity_athlete_registration">AthleteRegistrationActivity</string>
+
+    <!-- Sports profile -->
+    <string name="sp_athlete">Atleta</string>
+    <string name="sp_basketball_player">Basquetbolista</string>
+    <string name="sp_cycist">Ciclista</string>
+    <string name="sp_soccer_player">Futbolista</string>
+    <string name="sp_swimmer">Nadador(a)</string>
+    <string name="sp_tri_athlete">Triatleta</string>
 </resources>
