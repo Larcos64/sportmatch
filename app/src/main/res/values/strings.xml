@@ -2,6 +2,7 @@
     <string name="app_name">Sportmatch</string>
 
     <!-- App Strings -->
+    <string name="welcome">Bienvenido(a) a Sportmatch</string>
     <string name="athlete">Deportista</string>
     <string name="establishment">Establecimiento</string>
 

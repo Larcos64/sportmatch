@@ -5,23 +5,30 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -41,6 +49,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
+import com.example.sportmatch.usecases.common.appBarUtil
+import org.w3c.dom.Text
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -52,6 +62,44 @@ fun AthleteRegistrationScreen(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
+        /*var scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+        Scaffold (
+            modifier = Modifier
+                .fillMaxSize()
+                .nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = {
+                CenterAlignedTopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary,
+                    ),
+                    title = { Text(stringResource(id = R.string.establishment_registration)) },
+                    navigationIcon = {
+                        IconButton(onClick = { *//* do something *//* }) {
+                            Icon(
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = "Localized description"
+                            )
+                        }
+                    }
+                )
+            }
+        ) {
+                values ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(values)
+            ) {
+                items(100) {
+                    Text(
+                        text = "Item$it",
+                        modifier = Modifier.padding(dimensionResource(R.dimen.sixteen))
+                    )
+                }
+            }
+        }*/
+
         Column (
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
@@ -116,10 +164,17 @@ fun AthleteRegistrationScreen(
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.thirty)))
 
             // Sports profile
-            val options = listOf("Option 1", "Option 2", "Option 3", "Option 4", "Option 5")
+            val options = listOf(
+                stringResource(id = R.string.sp_athlete),
+                stringResource(id = R.string.sp_basketball_player),
+                stringResource(id = R.string.sp_cycist),
+                stringResource(id = R.string.sp_soccer_player),
+                stringResource(id = R.string.sp_swimmer),
+                stringResource(id = R.string.sp_tri_athlete),
+                )
             var expanded by remember { mutableStateOf(false) }
             var selectedOptionText by remember { mutableStateOf(options[0]) }
-            
+
             ExposedDropdownMenuBox(
                 expanded = expanded,
                 onExpandedChange = {

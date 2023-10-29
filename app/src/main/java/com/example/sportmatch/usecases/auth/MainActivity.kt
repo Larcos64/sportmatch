@@ -25,6 +25,7 @@ import com.example.sportmatch.usecases.auth.sign_in.GoogleAuthUiClient
 import com.example.sportmatch.usecases.auth.sign_in.SignInScreen
 import com.example.sportmatch.usecases.auth.sign_in.SignInViewModel
 import com.example.sportmatch.usecases.register.AthleteRegistrationScreen
+import com.example.sportmatch.usecases.register.EstablishmentRegistrationScreen
 import com.example.sportmatch.usecases.ui.theme.SportmatchTheme
 import kotlinx.coroutines.launch
 import com.google.android.gms.auth.api.identity.Identity
@@ -114,15 +115,25 @@ class MainActivity: androidx.activity.ComponentActivity() {
                                         navController.popBackStack()
                                     }
                                 },
-                                onClickImage = {
+                                onClickAthlete = {
                                     lifecycleScope.launch {
                                         navController.navigate("athleteRegistration")
+                                    }
+                                },
+                                onClickEstablishment = {
+                                    lifecycleScope.launch {
+                                        navController.navigate("establishmentRegistration")
                                     }
                                 }
                             )
                         }
                         composable("athleteRegistration") {
                             AthleteRegistrationScreen(
+                                userData = googleAuthUiClient.getSignedInUser()
+                            )
+                        }
+                        composable("establishmentRegistration") {
+                            EstablishmentRegistrationScreen(
                                 userData = googleAuthUiClient.getSignedInUser()
                             )
                         }

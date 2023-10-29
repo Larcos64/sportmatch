@@ -35,7 +35,8 @@ import com.example.sportmatch.usecases.auth.sign_in.UserData
 fun RegisterAs(
     userData: UserData?,
     onSignOut: () -> Unit,
-    onClickImage: () -> Unit,
+    onClickAthlete: () -> Unit,
+    onClickEstablishment: () -> Unit
 ) {
     val context = LocalContext.current
 
@@ -81,12 +82,27 @@ fun RegisterAs(
                 .clickable(
                 enabled = true,
                 onClickLabel = stringResource(id = R.string.athlete),
-                onClick = onClickImage
+                onClick = onClickAthlete
             )
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
             painter = painterResource(id = R.drawable.img_athletes),
-            contentDescription = "Imagen de registro"
+            contentDescription = stringResource(id = R.string.athlete)
+        )
+
+        Text(stringResource(id = R.string.establishment))
+        Spacer(Modifier.height(16.dp))
+        Image(
+            modifier = Modifier
+                .clickable(
+                    enabled = true,
+                    onClickLabel = stringResource(id = R.string.athlete),
+                    onClick = onClickEstablishment
+                )
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 16.dp, bottom = 16.dp),
+            painter = painterResource(id = R.drawable.img_establishments),
+            contentDescription = stringResource(id = R.string.establishment)
         )
     }
 }
