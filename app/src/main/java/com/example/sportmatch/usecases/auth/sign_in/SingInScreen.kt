@@ -68,14 +68,20 @@ fun SignInScreen(
         modifier = Modifier.fillMaxSize() // Esto hace que el Column ocupe toda la pantalla
     ) {
 
-        Text(
+        /*Text(
             text = stringResource(id = R.string.welcome),
             color = MaterialTheme.colorScheme.tertiary,
             textAlign = TextAlign.Center,
-            fontSize = 36.sp,
+            fontSize = 30.sp,
             fontWeight = FontWeight.SemiBold,
-            lineHeight = 24.sp,
+            lineHeight = 36.sp,
             letterSpacing = 1.sp
+        )*/
+
+        Text(
+            text = stringResource(id = R.string.welcome),
+            color = MaterialTheme.colorScheme.tertiary,
+            style = MaterialTheme.typography.headlineLarge
         )
 
         Spacer(modifier = Modifier.height(16.dp))

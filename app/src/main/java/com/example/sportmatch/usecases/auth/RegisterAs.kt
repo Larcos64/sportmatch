@@ -60,7 +60,7 @@ fun RegisterAs(
             Text(text = "Cerrar sesión")
         }*/
     }
-    if (userData?.username != null) {
+    /*if (userData?.username != null) {
         Text(
             text = userData.username,
             color = MaterialTheme.colorScheme.tertiary,
@@ -68,7 +68,14 @@ fun RegisterAs(
             fontSize = 36.sp,
             fontWeight = FontWeight.SemiBold
         )
-    }
+    }*/
+
+    Text(
+        text = stringResource(id = R.string.register_as),
+        color = MaterialTheme.colorScheme.tertiary,
+        textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.headlineLarge
+    )
 
     Column(
         modifier = Modifier.padding(16.dp),

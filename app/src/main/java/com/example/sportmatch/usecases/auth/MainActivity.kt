@@ -129,6 +129,7 @@ class MainActivity: androidx.activity.ComponentActivity() {
                         }
                         composable("athleteRegistration") {
                             AthleteRegistrationScreen(
+                                navController,
                                 userData = googleAuthUiClient.getSignedInUser()
                             )
                         }
