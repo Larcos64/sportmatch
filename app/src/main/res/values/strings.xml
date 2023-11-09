@@ -29,6 +29,7 @@
 
     <!-- Title Strings -->
     <string name="register_as">Registrarse como:</string>
+    <string name="athlete_registration">Registrar atleta</string>
     <string name="establishment_registration">Registrar establecimiento</string>
     <string name="title_activity_athlete_registration">AthleteRegistrationActivity</string>
 

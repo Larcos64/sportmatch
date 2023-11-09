@@ -27,8 +27,10 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
+import com.example.sportmatch.usecases.common.appBarUtil
 
 
 @Composable
@@ -36,7 +38,8 @@ fun RegisterAs(
     userData: UserData?,
     onSignOut: () -> Unit,
     onClickAthlete: () -> Unit,
-    onClickEstablishment: () -> Unit
+    onClickEstablishment: () -> Unit,
+    navController: NavController,
 ) {
     val context = LocalContext.current
 
@@ -69,6 +72,10 @@ fun RegisterAs(
             fontWeight = FontWeight.SemiBold
         )
     }*/
+    appBarUtil.getAppBar(
+        title = stringResource(id = R.string.establishment_registration),
+        navigation = { navController.navigateUp() }
+    )
 
     Text(
         text = stringResource(id = R.string.register_as),
@@ -82,7 +89,6 @@ fun RegisterAs(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(stringResource(id = R.string.athlete))
         Spacer(Modifier.height(16.dp))
         Image(
             modifier = Modifier
@@ -93,11 +99,10 @@ fun RegisterAs(
             )
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
-            painter = painterResource(id = R.drawable.img_athletes),
+            painter = painterResource(id = R.drawable.img_athletes_title),
             contentDescription = stringResource(id = R.string.athlete)
         )
 
-        Text(stringResource(id = R.string.establishment))
         Spacer(Modifier.height(16.dp))
         Image(
             modifier = Modifier
@@ -108,7 +113,7 @@ fun RegisterAs(
                 )
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
-            painter = painterResource(id = R.drawable.img_establishments),
+            painter = painterResource(id = R.drawable.img_establishments_title),
             contentDescription = stringResource(id = R.string.establishment)
         )
     }

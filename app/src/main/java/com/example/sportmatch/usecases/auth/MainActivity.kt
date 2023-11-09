@@ -124,7 +124,8 @@ class MainActivity: androidx.activity.ComponentActivity() {
                                     lifecycleScope.launch {
                                         navController.navigate("establishmentRegistration")
                                     }
-                                }
+                                },
+                                navController
                             )
                         }
                         composable("athleteRegistration") {

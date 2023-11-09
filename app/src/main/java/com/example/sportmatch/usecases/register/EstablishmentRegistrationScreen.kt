@@ -9,30 +9,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Abc
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -44,11 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -75,20 +61,9 @@ fun EstablishmentRegistrationScreen(
                 .fillMaxSize()
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
-                CenterAlignedTopAppBar(
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        titleContentColor = MaterialTheme.colorScheme.tertiary,
-                    ),
-                    title = { Text(stringResource(id = R.string.establishment_registration)) },
-                    navigationIcon = {
-                        IconButton(onClick = {}) {
-                            Icon(
-                                imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Localized description"
-                            )
-                        }
-                    }
+                appBarUtil.getAppBar(
+                    title = stringResource(id = R.string.establishment_registration),
+                    navigation = { navController.navigateUp() }
                 )
             },
             content = { innerPadding ->
@@ -125,15 +100,38 @@ fun EstablishmentRegistrationScreen(
                             imeAction = ImeAction.Next
                         )
                     )
+
+                    // Email
+                    var filledTextEmail by remember {
+                        mutableStateOf(userData?.email.toString())
+                    }
+                    CustomOutlinedTextField(
+                        value = filledTextEmail,
+                        onValueChange = { filledTextEmail = it },
+                        leadingIconImageVector = Icons.Outlined.Email,
+                        label = stringResource(id = R.string.email),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Text,
+                            imeAction = ImeAction.Next
+                        )
+                    )
                     
                     Button(
-                        onClick = { createUser(userData?.userId.toString(), filledTextName) },
+                        onClick = {
+                            createUser(
+                                userData?.userId.toString(),
+                                filledTextName,
+                                filledTextEmail,
+                                userData?.profilePictureUrl.toString(),
+                                "ESTABLISHMENT"
+                            )},
                         modifier = Modifier
                             .padding(20.dp)
                             .fillMaxWidth(0.9f),
+                        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiary)
                     ) 
                     {
-                        Text(text = stringResource(id = R.string.register), fontSize = 20.sp)
+                        Text(text = stringResource(id = R.string.register), fontSize = 20.sp, color = MaterialTheme.colorScheme.primary)
                     }
                     /*var filledTextName by remember {
                         mutableStateOf(userData?.username.toString())
@@ -171,11 +169,20 @@ fun EstablishmentRegistrationScreen(
     }
 }
 
-private fun createUser(userId: String, name: String) {
-    val user = mutableMapOf<String, Any>()
+private fun createUser(userId: String, name: String, email: String, profilePictureUrl: String, role: String) {
+    /*val user = mutableMapOf<String, Any>()
 
     user["user_id"] = userId
-    user["display_name"] = name
+    user["display_name"] = name*/
+
+    val user = UserData(
+        userId = userId,
+        username = name,
+        email = email,
+        profilePictureUrl = profilePictureUrl,
+        role = role
+    )
+
     FirebaseFirestore.getInstance().collection("users")
         .add(user)
         .addOnSuccessListener {

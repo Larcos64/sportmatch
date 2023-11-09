@@ -1,9 +1,11 @@
 package com.example.sportmatch.usecases.register
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
@@ -13,8 +15,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -47,6 +52,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
@@ -54,6 +60,8 @@ import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
 import com.example.sportmatch.usecases.common.BackButton
 import com.example.sportmatch.usecases.common.appBarUtil
+import com.example.sportmatch.usecases.ui.composables.CustomOutlinedTextField
+import com.google.firebase.firestore.FirebaseFirestore
 import org.w3c.dom.Text
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,7 +70,6 @@ fun AthleteRegistrationScreen(
     navController: NavController,
     userData: UserData?,
 ) {
-    // Contenido de la pantalla de registro de atletas
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -73,22 +80,29 @@ fun AthleteRegistrationScreen(
                 .fillMaxSize()
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
-                CenterAlignedTopAppBar(
+                appBarUtil.getAppBar(
+                    title = stringResource(id = R.string.athlete_registration),
+                    navigation = { navController.navigateUp() }
+                )
+                /*CenterAlignedTopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = MaterialTheme.colorScheme.tertiary,
                     ),
-                    title = { Text(stringResource(id = R.string.establishment_registration)) },
+                    title = { Text(stringResource(id = R.string.athlete_registration)) },
                     navigationIcon = {
-                        BackButton(navController = navController, icon = Icons.Filled.ArrowBack, contentDescription = "Localized description")
-                        /*IconButton(onClick = { navController }) {
+                        IconButton(
+                            onClick = {
+                                navController.navigateUp()
+                            }
+                        ) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Localized description"
+                                contentDescription = "Back"
                             )
-                        }*/
+                        }
                     }
-                )
+                )*/
             },
             content = { innerPadding ->
                 Column (
@@ -114,15 +128,11 @@ fun AthleteRegistrationScreen(
                     var filledTextName by remember {
                         mutableStateOf(userData?.username.toString())
                     }
-                    OutlinedTextField(
+                    CustomOutlinedTextField(
                         value = filledTextName,
                         onValueChange = { filledTextName = it },
-                        textStyle = LocalTextStyle.current.copy(
-                            textAlign = TextAlign.Left
-                        ),
-                        label = {
-                            Text(text = stringResource(id = R.string.name))
-                        },
+                        leadingIconImageVector = Icons.Default.Person,
+                        label = stringResource(id = R.string.name),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
                             imeAction = ImeAction.Next
@@ -135,22 +145,15 @@ fun AthleteRegistrationScreen(
                     var filledTextEmail by remember {
                         mutableStateOf(userData?.email.toString())
                     }
-                    OutlinedTextField(
+                    CustomOutlinedTextField(
                         value = filledTextEmail,
                         onValueChange = { filledTextEmail = it },
-                        textStyle = LocalTextStyle.current.copy(
-                            textAlign = TextAlign.Left
-                        ),
-                        label = {
-                            Text(text = stringResource(id = R.string.email))
-                        },
+                        leadingIconImageVector = Icons.Outlined.Email,
+                        label = stringResource(id = R.string.email),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Text,
                             imeAction = ImeAction.Next
-                        ),
-                        leadingIcon = {
-                            Icon(imageVector = Icons.Outlined.Email, contentDescription = stringResource(id = R.string.email))
-                        }
+                        )
                     )
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.thirty)))
@@ -201,9 +204,23 @@ fun AthleteRegistrationScreen(
                         }
                     }
 
-                    /*Button(onClick = { saveNameToFirestore() }) {
-                        Text("Save")
-                    }*/
+                    Button(
+                        onClick = {
+                            createUser(
+                                userData?.userId.toString(),
+                                filledTextName,
+                                filledTextEmail,
+                                userData?.profilePictureUrl.toString(),
+                                "ATHLETE"
+                            )},
+                        modifier = Modifier
+                            .padding(20.dp)
+                            .fillMaxWidth(0.9f),
+                        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiary)
+                    )
+                    {
+                        Text(text = stringResource(id = R.string.register), fontSize = 20.sp, color = MaterialTheme.colorScheme.primary)
+                    }
 
                     /*Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.thirty)))
 
@@ -231,7 +248,28 @@ fun AthleteRegistrationScreen(
                 }
             }
         )
-
-
     }
+}
+
+private fun createUser(userId: String, name: String, email: String, profilePictureUrl: String, role: String) {
+    /*val user = mutableMapOf<String, Any>()
+
+    user["user_id"] = userId
+    user["display_name"] = name*/
+
+    val user = UserData(
+        userId = userId,
+        username = name,
+        email = email,
+        profilePictureUrl = profilePictureUrl,
+        role = role
+    )
+
+    FirebaseFirestore.getInstance().collection("users")
+        .add(user)
+        .addOnSuccessListener {
+            Log.d("Ok", "Created ${it.id}")
+        }.addOnFailureListener {
+            Log.d("Fail", "Error ${it}")
+        }
 }
