@@ -74,6 +74,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
     // Material
     implementation("com.google.android.material:material:1.10.0-rc01")
@@ -88,6 +89,7 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.0-alpha10")
     //implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
     implementation("androidx.compose.animation:animation:1.5.4")
+    implementation("androidx.compose.material:material-icons-extended")
 
     //implementation("androidx.compose.material:material:1.5.4")
     implementation("androidx.navigation:navigation-compose:2.7.4")

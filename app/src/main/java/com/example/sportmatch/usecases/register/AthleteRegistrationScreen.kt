@@ -201,6 +201,10 @@ fun AthleteRegistrationScreen(
                         }
                     }
 
+                    /*Button(onClick = { saveNameToFirestore() }) {
+                        Text("Save")
+                    }*/
+
                     /*Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.thirty)))
 
                     var filledTextPass by remember {

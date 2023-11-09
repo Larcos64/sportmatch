@@ -135,6 +135,7 @@ class MainActivity: androidx.activity.ComponentActivity() {
                         }
                         composable("establishmentRegistration") {
                             EstablishmentRegistrationScreen(
+                                navController,
                                 userData = googleAuthUiClient.getSignedInUser()
                             )
                         }

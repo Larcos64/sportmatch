@@ -109,10 +109,9 @@ fun SignInScreen(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Aquí cargamos el logo personalizado desde un recurso Drawable
                 Image(
-                    painter = painterResource(id = R.drawable.ic_google_logo), // Reemplaza con tu ID de recurso
-                    contentDescription = null, // Puedes agregar una descripción si es necesario
+                    painter = painterResource(id = R.drawable.ic_google_logo),
+                    contentDescription = null,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
