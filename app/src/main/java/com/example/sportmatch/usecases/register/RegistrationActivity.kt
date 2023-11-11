@@ -1,11 +1,9 @@
 package com.example.sportmatch.usecases.register
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.PorterDuff
-import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -16,6 +14,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.sportmatch.R
 import com.example.sportmatch.databinding.ActivityRegistrationBinding
+import com.example.sportmatch.usecases.screens.register.AthleteRegistrationActivity
 
 class RegistrationActivity : AppCompatActivity() {
 

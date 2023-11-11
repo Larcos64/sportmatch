@@ -1,4 +1,4 @@
-package com.example.sportmatch.usecases.auth
+package com.example.sportmatch.usecases.screens.register
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image

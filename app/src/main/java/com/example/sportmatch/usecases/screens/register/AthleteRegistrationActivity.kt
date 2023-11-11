@@ -1,4 +1,4 @@
-package com.example.sportmatch.usecases.register
+package com.example.sportmatch.usecases.screens.register
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

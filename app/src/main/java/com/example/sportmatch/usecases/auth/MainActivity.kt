@@ -1,10 +1,8 @@
 package com.example.sportmatch.usecases.auth
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.core.app.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -13,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -22,10 +19,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.sportmatch.usecases.auth.sign_in.GoogleAuthUiClient
-import com.example.sportmatch.usecases.auth.sign_in.SignInScreen
+import com.example.sportmatch.usecases.screens.login.SignInScreen
 import com.example.sportmatch.usecases.auth.sign_in.SignInViewModel
-import com.example.sportmatch.usecases.register.AthleteRegistrationScreen
-import com.example.sportmatch.usecases.register.EstablishmentRegistrationScreen
+import com.example.sportmatch.usecases.screens.register.AthleteRegistrationScreen
+import com.example.sportmatch.usecases.screens.register.EstablishmentRegistrationScreen
+import com.example.sportmatch.usecases.screens.register.RegisterAs
 import com.example.sportmatch.usecases.ui.theme.SportmatchTheme
 import kotlinx.coroutines.launch
 import com.google.android.gms.auth.api.identity.Identity
