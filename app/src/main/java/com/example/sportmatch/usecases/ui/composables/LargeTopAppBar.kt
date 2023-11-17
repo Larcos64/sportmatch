@@ -3,6 +3,7 @@ package com.example.sportmatch.usecases.ui.composables
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -35,18 +37,16 @@ fun LargeTopAppBar(
     colors: TopAppBarColors = TopAppBarDefaults.largeTopAppBarColors(),
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             LargeTopAppBar(
-                title = {
-                    Text(
-                        "Large TopAppBar",
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.tertiary,
+                ),
+                title = title,
                 navigationIcon = {
                     IconButton(onClick = { /* doSomething() */ }) {
                         Icon(
@@ -68,8 +68,11 @@ fun LargeTopAppBar(
         },
         content = { innerPadding ->
             LazyColumn(
-                contentPadding = innerPadding,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                //contentPadding = innerPadding,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                //verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 val list = (0..75).map { it.toString() }
                 items(count = list.size) {

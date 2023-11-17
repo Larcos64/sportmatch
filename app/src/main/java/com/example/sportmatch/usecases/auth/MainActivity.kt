@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.sportmatch.usecases.auth.sign_in.GoogleAuthUiClient
 import com.example.sportmatch.usecases.screens.login.SignInScreen
 import com.example.sportmatch.usecases.auth.sign_in.SignInViewModel
+import com.example.sportmatch.usecases.navigation.AppNavigation
 import com.example.sportmatch.usecases.screens.register.AthleteRegistrationScreen
 import com.example.sportmatch.usecases.screens.register.EstablishmentRegistrationScreen
 import com.example.sportmatch.usecases.screens.register.RegisterAs
@@ -44,7 +45,11 @@ class MainActivity: androidx.activity.ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
+                    AppNavigation(
+                        viewModel = viewModels<SignInViewModel>().value,
+                        googleAuthUiClient = googleAuthUiClient
+                    )
+                    /*val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "sign_in" ) {
                         composable("sign_in") {
                             val viewModel by viewModels<SignInViewModel>()
@@ -138,7 +143,7 @@ class MainActivity: androidx.activity.ComponentActivity() {
                                 userData = googleAuthUiClient.getSignedInUser()
                             )
                         }
-                    }
+                    }*/
                 }
             }
         }

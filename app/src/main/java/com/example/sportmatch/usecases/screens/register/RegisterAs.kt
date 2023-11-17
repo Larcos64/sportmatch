@@ -35,11 +35,11 @@ import com.example.sportmatch.usecases.common.appBarUtil
 
 @Composable
 fun RegisterAs(
+    navController: NavController,
     userData: UserData?,
     onSignOut: () -> Unit,
     onClickAthlete: () -> Unit,
     onClickEstablishment: () -> Unit,
-    navController: NavController,
 ) {
     val context = LocalContext.current
 

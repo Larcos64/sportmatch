@@ -18,10 +18,6 @@ import com.example.sportmatch.usecases.auth.sign_in.UserData
 fun HomeScreen(
     navController: NavController
 ) {
-    Column (
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -29,12 +25,11 @@ fun HomeScreen(
             LargeTopAppBar(
                 title = {
                     Text(
-                        "Large TopAppBar",
+                        "Nombre Usuario",
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
             )
         }
-    }
 }

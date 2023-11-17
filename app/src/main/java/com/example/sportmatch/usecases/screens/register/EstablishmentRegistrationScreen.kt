@@ -53,7 +53,6 @@ fun EstablishmentRegistrationScreen(
     navController: NavController,
     userData: UserData?,
 ) {
-    val navController = rememberNavController()
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -193,7 +192,7 @@ private fun createUser(navController: NavController, userId: String, name: Strin
         .add(user)
         .addOnSuccessListener {
             Log.d("Ok", "Created ${it.id}")
-            //navController.navigate(AppScreens.HomeScreen.route)
+            navController.navigate(AppScreens.HomeScreen.route)
             /*val intent = Intent(context, HomeActivity::class.java)
             intent.putExtra("username", it.id)
             startActivity(intent)*/
