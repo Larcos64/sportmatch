@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import com.example.sportmatch.usecases.auth.sign_in.GoogleAuthUiClient
 import com.example.sportmatch.usecases.auth.sign_in.SignInViewModel
+import com.example.sportmatch.usecases.navigation.AppScreens
 import com.example.sportmatch.usecases.screens.register.RegisterAs
 import kotlinx.coroutines.launch
 
@@ -43,12 +44,12 @@ fun SecondScreen(
         },
         onClickAthlete = {
             lifecycleOwner.lifecycleScope.launch {
-                navController.navigate("athlete_registration")
+                navController.navigate(AppScreens.AthleteRegistrationScreen.route)
             }
         },
         onClickEstablishment = {
             lifecycleOwner.lifecycleScope.launch {
-                navController.navigate("establishment_registration")
+                navController.navigate(AppScreens.EstablishmentRegistrationScreen.route)
             }
         }
     )

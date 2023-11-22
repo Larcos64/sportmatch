@@ -51,7 +51,10 @@ fun AppNavigation(
                 )
             }
             composable(route = AppScreens.HomeScreen.route) {
-                HomeScreen(navController)
+                HomeScreen(
+                    navController,
+                    userData = googleAuthUiClient.getSignedInUser()
+                )
             }
         }
     )

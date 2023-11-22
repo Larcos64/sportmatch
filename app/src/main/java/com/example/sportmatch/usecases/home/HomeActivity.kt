@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.sportmatch.R
+import com.example.sportmatch.usecases.ui.composables.ComposableLargeTopAppBar
 import com.example.sportmatch.usecases.ui.theme.SportmatchTheme
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -25,21 +26,19 @@ class HomeActivity : androidx.activity.ComponentActivity() {
         // Data saving
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()*/
         setContent {
-            SportmatchTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    LargeTopAppBar(
-                        title = {
-                            Text(
-                                "Large TopAppBar",
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                        }
-                    )
-                }
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
+                ComposableLargeTopAppBar(
+                    title = {
+                        Text(
+                            "Large TopAppBar",
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                )
             }
         }
     }
