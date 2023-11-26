@@ -1,6 +1,7 @@
 package com.example.sportmatch.usecases.screens.register
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -37,6 +38,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
@@ -44,8 +46,10 @@ import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
 import com.example.sportmatch.usecases.common.appBarUtil
 import com.example.sportmatch.usecases.navigation.AppScreens
+import com.example.sportmatch.usecases.screens.home.HomeScreen
 import com.example.sportmatch.usecases.ui.composables.CustomOutlinedTextField
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -16,8 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
+import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
 import com.example.sportmatch.usecases.navigation.AppScreens
 import com.example.sportmatch.usecases.ui.composables.ComposableLargeTopAppBar
@@ -38,13 +40,13 @@ fun HomeScreen(
             ComposableLargeTopAppBar(
                 title = {
                     Text(
-                        "Nombre Usuario",
+                        userData?.username.toString(),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /* doSomething() */ }) {
+                    IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "Localized description"

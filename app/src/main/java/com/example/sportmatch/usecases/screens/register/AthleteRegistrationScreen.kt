@@ -47,6 +47,7 @@ import coil.compose.AsyncImage
 import com.example.sportmatch.R
 import com.example.sportmatch.usecases.auth.sign_in.UserData
 import com.example.sportmatch.usecases.common.appBarUtil
+import com.example.sportmatch.usecases.navigation.AppScreens
 import com.example.sportmatch.usecases.ui.composables.CustomOutlinedTextField
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -193,6 +194,7 @@ fun AthleteRegistrationScreen(
                     Button(
                         onClick = {
                             createUser(
+                                navController,
                                 userData?.userId.toString(),
                                 filledTextName,
                                 filledTextEmail,
@@ -238,7 +240,7 @@ fun AthleteRegistrationScreen(
     }
 }
 
-private fun createUser(userId: String, name: String, email: String, profilePictureUrl: String, role: String) {
+private fun createUser(navController: NavController, userId: String, name: String, email: String, profilePictureUrl: String, role: String) {
     /*val user = mutableMapOf<String, Any>()
 
     user["user_id"] = userId
@@ -256,6 +258,7 @@ private fun createUser(userId: String, name: String, email: String, profilePictu
         .add(user)
         .addOnSuccessListener {
             Log.d("Ok", "Created ${it.id}")
+            navController.navigate(AppScreens.HomeScreen.route)
         }.addOnFailureListener {
             Log.d("Fail", "Error ${it}")
         }
